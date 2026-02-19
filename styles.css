@@ -100,7 +100,7 @@
 
 /* Course info container: fixed height below image. */
 .local-mycoursesbycategory-container .course-card .course-info-container {
-    height: 80px;
+    height: 150px;
     padding: 0.75rem 0.85rem;
     overflow: hidden;
 }
