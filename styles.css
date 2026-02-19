@@ -1,0 +1,125 @@
+/* Hide empty page heading area to remove gap between navbar and content. */
+#page-local-mycoursesbycategory-index #page-header {
+    display: none;
+}
+
+/* Category section header: clickable and interactive. */
+.local-mycoursesbycategory-container .category-section .card-header {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.local-mycoursesbycategory-container .category-section .card-header:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Category heading typography. */
+.local-mycoursesbycategory-container .category-heading {
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.local-mycoursesbycategory-container .category-parentpath {
+    font-weight: 400;
+    font-size: 0.85em;
+}
+
+.local-mycoursesbycategory-container .category-name {
+    font-weight: 700;
+}
+
+/* Depth-based left border accent for visual hierarchy.
+   Uses theme primary color, each level 15% lighter than the previous. */
+.local-mycoursesbycategory-container .category-depth-1 {
+    border-left: 4px solid var(--bs-primary, var(--primary, #0d6efd));
+}
+
+.local-mycoursesbycategory-container .category-depth-2 {
+    border-left: 4px solid color-mix(in srgb, var(--bs-primary, var(--primary, #0d6efd)), white 15%);
+}
+
+.local-mycoursesbycategory-container .category-depth-3 {
+    border-left: 4px solid color-mix(in srgb, var(--bs-primary, var(--primary, #0d6efd)), white 28%);
+}
+
+.local-mycoursesbycategory-container .category-depth-4 {
+    border-left: 4px solid color-mix(in srgb, var(--bs-primary, var(--primary, #0d6efd)), white 39%);
+}
+
+.local-mycoursesbycategory-container .category-depth-5 {
+    border-left: 4px solid color-mix(in srgb, var(--bs-primary, var(--primary, #0d6efd)), white 48%);
+}
+
+/* ── Course card ── */
+.local-mycoursesbycategory-container .course-card {
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.local-mycoursesbycategory-container .course-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+/* Course card image: cover for uniform fill, fixed aspect-ratio. */
+.local-mycoursesbycategory-container .course-card img.card-img-top {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* Placeholder when no course image is available. */
+.local-mycoursesbycategory-container .course-card .card-img-top--placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background-color: #e9ecef;
+}
+
+/* Course info container. */
+.local-mycoursesbycategory-container .course-card .course-info-container {
+    padding: 0.75rem 0.85rem;
+}
+
+/* Course title: bold, dark, readable. */
+.local-mycoursesbycategory-container .course-card .coursename {
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1.35;
+    color: var(--bs-body-color, var(--gray-dark, #212529));
+}
+
+.local-mycoursesbycategory-container .course-card .coursename:hover {
+    color: var(--bs-primary, var(--primary, #0d6efd));
+    text-decoration: none;
+}
+
+/* Allow course name to wrap across multiple lines. */
+.local-mycoursesbycategory-container .course-card .multiline {
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Progress in card footer. */
+.local-mycoursesbycategory-container .course-card .card-footer {
+    padding: 0.5rem 0.85rem 0.75rem;
+}
+
+.local-mycoursesbycategory-container .course-card .progress-text small {
+    font-size: 0.75rem;
+    color: #6c757d;
+}
+
+/* Toggle folder icon: open when expanded, closed when collapsed. */
+.local-mycoursesbycategory-container .card-header[aria-expanded="false"] .fa-folder-open:before {
+    content: "\f07b";
+}

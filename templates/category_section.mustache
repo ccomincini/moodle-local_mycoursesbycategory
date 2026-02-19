@@ -1,0 +1,77 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_mycoursesbycategory/category_section
+
+    A collapsible category section containing course cards.
+
+    Context variables required for this template:
+    * id - Category ID
+    * name - Category name
+    * parentpath - Parent category breadcrumb (empty for top-level)
+    * hasparentpath - Whether category has a parent path
+    * depth - Category depth (1 = top-level)
+    * coursecount - Number of courses in the category
+    * courses - Array of course objects
+
+    Example context (json):
+    {
+        "id": 5,
+        "name": "2025",
+        "parentpath": "Formazione / Protezione Civile",
+        "hasparentpath": true,
+        "depth": 3,
+        "coursecount": 2,
+        "courses": [
+            {
+                "id": 1,
+                "fullname": "Course 1",
+                "courseurl": "/course/view.php?id=1",
+                "courseimage": "http://example.com/image.jpg",
+                "hasprogress": true,
+                "progress": 50
+            }
+        ]
+    }
+}}
+<div class="card mb-3 category-section category-depth-{{depth}}">
+    <div class="card-header d-flex justify-content-between align-items-center"
+         role="button"
+         data-toggle="collapse" data-target="#category-{{id}}"
+         data-bs-toggle="collapse" data-bs-target="#category-{{id}}"
+         aria-expanded="true" aria-controls="category-{{id}}">
+        <div class="mb-0 category-heading">
+            <i class="fa fa-folder-open mr-2 me-2"></i>
+            {{#hasparentpath}}
+            <span class="category-parentpath text-muted">{{parentpath}} / </span>
+            {{/hasparentpath}}
+            <span class="category-name">{{name}}</span>
+        </div>
+        <span class="badge badge-pill badge-primary bg-primary rounded-pill ml-2 ms-2">{{coursecount}}</span>
+    </div>
+    <div id="category-{{id}}" class="collapse show">
+        <div class="card-body">
+            <div class="card-grid mx-0 row row-cols-1 row-cols-sm-2 row-cols-lg-3" role="list">
+                {{#courses}}
+                    <div class="col d-flex px-0 mb-2">
+                        {{> local_mycoursesbycategory/course_card}}
+                    </div>
+                {{/courses}}
+            </div>
+        </div>
+    </div>
+</div>
