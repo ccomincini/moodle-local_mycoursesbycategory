@@ -59,6 +59,8 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     overflow: hidden;
     transition: box-shadow 0.2s ease, transform 0.2s ease;
+    max-width: 380px;
+    aspect-ratio: 16 / 10;
 }
 
 .local-mycoursesbycategory-container .course-card:hover {
