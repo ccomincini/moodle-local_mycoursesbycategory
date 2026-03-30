@@ -18,7 +18,6 @@ namespace local_mycoursesbycategory;
 
 use core_course_category;
 use core_course_list_element;
-use completion_info;
 use moodle_url;
 
 /**
@@ -36,7 +35,7 @@ class helper {
      * @return array Array of categories, each containing an array of courses.
      */
     public static function get_courses_grouped_by_category(int $userid = 0): array {
-        global $USER;
+        global $USER, $DB;
 
         if (!$userid) {
             $userid = $USER->id;
@@ -74,9 +73,10 @@ class helper {
             $courseobj = new core_course_list_element($course);
             $courseimage = self::get_course_image($courseobj);
 
-            // Course completion check.
-            $completion = new completion_info($course);
-            $iscomplete = $completion->is_enabled() && $completion->is_course_complete($userid);
+            // Course completion: check directly in course_completions table.
+            $timecompleted = $DB->get_field('course_completions', 'timecompleted',
+                ['userid' => $userid, 'course' => $course->id]);
+            $iscomplete = !empty($timecompleted);
 
             $categories[$catid]['courses'][] = [
                 'id' => $course->id,
