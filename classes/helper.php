@@ -74,8 +74,11 @@ class helper {
             $courseimage = self::get_course_image($courseobj);
 
             // Course completion: check directly in course_completions table.
-            $timecompleted = $DB->get_field('course_completions', 'timecompleted',
-                ['userid' => $userid, 'course' => $course->id]);
+            $timecompleted = $DB->get_field(
+                'course_completions',
+                'timecompleted',
+                ['userid' => $userid, 'course' => $course->id]
+            );
             $iscomplete = !empty($timecompleted);
 
             $categories[$catid]['courses'][] = [

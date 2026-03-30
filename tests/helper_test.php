@@ -26,8 +26,7 @@ use advanced_testcase;
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  * @covers     \local_mycoursesbycategory\helper
  */
-class helper_test extends advanced_testcase {
-
+final class helper_test extends advanced_testcase {
     /**
      * Test grouping courses by category with courses in different categories.
      */
