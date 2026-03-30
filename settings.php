@@ -38,14 +38,6 @@ if ($hassiteconfig) {
         0
     ));
 
-    // Show progress.
-    $settings->add(new admin_setting_configcheckbox(
-        'local_mycoursesbycategory/showprogress',
-        get_string('showprogress', 'local_mycoursesbycategory'),
-        get_string('showprogressdescription', 'local_mycoursesbycategory'),
-        1
-    ));
-
     // Layout.
     $settings->add(new admin_setting_configselect(
         'local_mycoursesbycategory/layout',

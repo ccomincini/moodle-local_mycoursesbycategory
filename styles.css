@@ -127,14 +127,16 @@
     overflow: hidden;
 }
 
-/* Progress in card footer. */
-.local-mycoursesbycategory-container .course-card .card-footer {
-    padding: 0.5rem 0.85rem 0.75rem;
-}
-
-.local-mycoursesbycategory-container .course-card .progress-text small {
-    font-size: 0.75rem;
-    color: #6c757d;
+/* Course completion badge overlay on course image. */
+.local-mycoursesbycategory-container .course-card .course-complete-badge {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 55%;
+    max-width: 200px;
+    opacity: 0.9;
+    pointer-events: none;
+    z-index: 1;
 }
 
 /* Toggle folder icon: open when expanded, closed when collapsed. */

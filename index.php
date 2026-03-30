@@ -39,23 +39,6 @@ $PAGE->set_heading('');
 
 $categories = \local_mycoursesbycategory\helper::get_courses_grouped_by_category();
 
-$showprogress = get_config('local_mycoursesbycategory', 'showprogress');
-if ($showprogress === false) {
-    // Default to showing progress if not configured.
-    $showprogress = true;
-}
-
-// If progress display is disabled, strip progress data from all courses.
-if (!$showprogress) {
-    foreach ($categories as &$cat) {
-        foreach ($cat['courses'] as &$course) {
-            $course['hasprogress'] = false;
-            $course['progress'] = null;
-        }
-    }
-    unset($cat, $course);
-}
-
 $templatedata = [
     'title' => $title,
     'hascourses' => !empty($categories),

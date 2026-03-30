@@ -46,3 +46,4 @@ $string['layoutdescription'] = 'Scegli il layout per la visualizzazione dei cors
 $string['layoutcard'] = 'Card';
 $string['layoutlist'] = 'Lista';
 $string['myenrolledcourses'] = 'I corsi a cui sono iscritto';
+$string['completed'] = 'Completato';

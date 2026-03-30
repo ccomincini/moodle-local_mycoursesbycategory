@@ -46,3 +46,4 @@ $string['layoutdescription'] = 'Choose the layout for course display.';
 $string['layoutcard'] = 'Card';
 $string['layoutlist'] = 'List';
 $string['myenrolledcourses'] = 'My enrolled courses';
+$string['completed'] = 'Completed';

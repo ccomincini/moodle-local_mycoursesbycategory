@@ -24,8 +24,7 @@
     * fullname - Course full name
     * courseurl - URL to the course
     * courseimage - Course image URL (can be null)
-    * hasprogress - Whether progress data is available
-    * progress - Progress percentage (0-100)
+    * iscomplete - Whether the course is completed
 
     Example context (json):
     {
@@ -33,8 +32,7 @@
         "fullname": "Course 1",
         "courseurl": "/course/view.php?id=1",
         "courseimage": "http://example.com/image.jpg",
-        "hasprogress": true,
-        "progress": 75
+        "iscomplete": true
     }
 }}
 <div class="card course-card mx-1" role="listitem" data-course-id="{{id}}">
@@ -48,6 +46,11 @@
                 <span class="visually-hidden sr-only">{{shortname}} - {{fullname}}</span>
             </div>
             {{/courseimage}}
+            {{#iscomplete}}
+            <img src="{{#pix}}completato, local_mycoursesbycategory{{/pix}}"
+                 class="course-complete-badge"
+                 alt="{{#str}}completed, local_mycoursesbycategory{{/str}}">
+            {{/iscomplete}}
         </a>
     </div>
     <div class="card-body pe-1 course-info-container">
@@ -59,17 +62,4 @@
             </div>
         </div>
     </div>
-    {{#hasprogress}}
-    <div class="card-footer border-0 bg-white w-100">
-        <div class="progress-text mb-1">
-            <small>{{#str}}progress, local_mycoursesbycategory{{/str}} {{progress}}%</small>
-        </div>
-        <div class="progress" style="height: 0.5rem;">
-            <div class="progress-bar" role="progressbar"
-                 style="width: {{progress}}%"
-                 aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100">
-            </div>
-        </div>
-    </div>
-    {{/hasprogress}}
 </div>

@@ -114,7 +114,6 @@ class helper_test extends advanced_testcase {
         $this->assertEquals('TC1', $coursedata['shortname']);
         $this->assertArrayHasKey('courseurl', $coursedata);
         $this->assertArrayHasKey('courseimage', $coursedata);
-        $this->assertArrayHasKey('hasprogress', $coursedata);
-        $this->assertArrayHasKey('progress', $coursedata);
+        $this->assertArrayHasKey('iscomplete', $coursedata);
     }
 }

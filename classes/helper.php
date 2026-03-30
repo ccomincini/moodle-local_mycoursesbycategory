@@ -18,7 +18,7 @@ namespace local_mycoursesbycategory;
 
 use core_course_category;
 use core_course_list_element;
-use core_completion\progress;
+use completion_info;
 use moodle_url;
 
 /**
@@ -75,8 +75,9 @@ class helper {
             $courseobj = new core_course_list_element($course);
             $courseimage = self::get_course_image($courseobj);
 
-            // Progress.
-            $progress = progress::get_course_progress_percentage($course, $userid);
+            // Course completion check.
+            $completion = new completion_info($course);
+            $iscomplete = $completion->is_enabled() && $completion->is_course_complete($userid);
 
             $categories[$catid]['courses'][] = [
                 'id' => $course->id,
@@ -84,8 +85,7 @@ class helper {
                 'shortname' => format_string($course->shortname, true),
                 'courseurl' => (new moodle_url('/course/view.php', ['id' => $course->id]))->out(false),
                 'courseimage' => $courseimage,
-                'progress' => $progress !== null ? round($progress) : null,
-                'hasprogress' => $progress !== null,
+                'iscomplete' => $iscomplete,
             ];
             $categories[$catid]['coursecount']++;
         }
