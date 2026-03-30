@@ -139,8 +139,9 @@
 }
 
 .local-mycoursesbycategory-container .course-card .course-complete-stamp img {
-    height: 80px;
+    height: 45px;
     width: auto;
+    opacity: 0.85;
 }
 
 /* Toggle folder icon: open when expanded, closed when collapsed. */
