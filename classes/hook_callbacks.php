@@ -30,7 +30,6 @@ use core\hook\output\before_http_headers;
  * Hook callbacks for the my courses by category plugin.
  */
 class hook_callbacks {
-
     /**
      * Redirect /my/courses.php to the plugin page when enabled.
      *

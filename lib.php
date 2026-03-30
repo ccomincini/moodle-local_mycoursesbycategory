@@ -22,11 +22,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
-// The before_http_headers callback has been migrated to the hook system.
-// See classes/hook_callbacks.php and db/hooks.php.
-
 /**
  * Add a navigation node for this plugin.
  *
