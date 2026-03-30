@@ -133,7 +133,7 @@
     position: absolute;
     bottom: 10px;
     left: 50%;
-    transform: translateX(-50%) rotate(-18deg);
+    transform: translateX(-50%);
     pointer-events: none;
     z-index: 2;
 }
