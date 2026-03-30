@@ -85,6 +85,9 @@ class helper {
                 'courseurl' => (new moodle_url('/course/view.php', ['id' => $course->id]))->out(false),
                 'courseimage' => $courseimage,
                 'iscomplete' => $iscomplete,
+                'completebadgeurl' => $iscomplete
+                    ? (new moodle_url('/local/mycoursesbycategory/pix/completato.png'))->out(false)
+                    : null,
             ];
             $categories[$catid]['coursecount']++;
         }
