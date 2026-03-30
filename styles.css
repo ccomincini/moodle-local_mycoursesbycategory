@@ -128,13 +128,14 @@
     overflow: hidden;
 }
 
-/* Course completion stamp in card body, centered and tilted like a rubber stamp. */
+/* Course completion stamp overlaid on card body, centered and tilted like a rubber stamp. */
 .local-mycoursesbycategory-container .course-card .course-complete-stamp {
     position: absolute;
     bottom: 10px;
     left: 50%;
     transform: translateX(-50%) rotate(-18deg);
     pointer-events: none;
+    z-index: 2;
 }
 
 .local-mycoursesbycategory-container .course-card .course-complete-stamp img {
