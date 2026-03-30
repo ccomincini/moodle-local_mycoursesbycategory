@@ -26,6 +26,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+/* global bootstrap */
 define(['jquery'], function($) {
 
     var storageKey = '';
@@ -76,6 +77,8 @@ define(['jquery'], function($) {
     return {
         /**
          * Initialise the collapse module.
+         *
+         * @param {number} userid The current user ID.
          */
         init: function(userid) {
             storageKey = 'local_mycoursesbycategory_collapsed_' + userid;
@@ -87,7 +90,8 @@ define(['jquery'], function($) {
             // Restore saved state: collapse sections that were previously collapsed.
             var collapsed = getCollapsedState();
             $container.find('.category-section .collapse').each(function() {
-                var id = this.id; // e.g. "category-5".
+                // E.g. "category-5".
+                var id = this.id;
                 if (collapsed[id]) {
                     // Remove 'show' class immediately (no animation on page load).
                     $(this).removeClass('show');

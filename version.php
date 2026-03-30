@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_mycoursesbycategory';
-$plugin->version   = 2026033014;
+$plugin->version   = 2026033015;
 $plugin->requires  = 2023100900; // Moodle 4.3.
 $plugin->maturity  = MATURITY_STABLE;
 $plugin->release   = '1.2.0';
