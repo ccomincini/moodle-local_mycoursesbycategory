@@ -46,11 +46,6 @@
                 <span class="visually-hidden sr-only">{{shortname}} - {{fullname}}</span>
             </div>
             {{/courseimage}}
-            {{#iscomplete}}
-            <img src="{{completebadgeurl}}"
-                 class="course-complete-badge"
-                 alt="{{#str}}completed, local_mycoursesbycategory{{/str}}">
-            {{/iscomplete}}
         </a>
     </div>
     <div class="card-body pe-1 course-info-container">
@@ -61,5 +56,11 @@
                 </a>
             </div>
         </div>
+        {{#iscomplete}}
+        <div class="course-complete-stamp">
+            <img src="{{completebadgeurl}}"
+                 alt="{{#str}}completed, local_mycoursesbycategory{{/str}}">
+        </div>
+        {{/iscomplete}}
     </div>
 </div>

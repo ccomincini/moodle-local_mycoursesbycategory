@@ -98,11 +98,13 @@
     height: 100%;
 }
 
-/* Course info container: fixed height below image. */
+/* Course info container: fixed height below image, flex column for stamp positioning. */
 .local-mycoursesbycategory-container .course-card .course-info-container {
     height: 150px;
     padding: 0.75rem 0.85rem;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Course title: bold, dark, readable. */
@@ -127,16 +129,20 @@
     overflow: hidden;
 }
 
-/* Course completion badge overlay on course image. */
-.local-mycoursesbycategory-container .course-card .course-complete-badge {
-    position: absolute;
-    bottom: 8px;
-    right: 8px;
-    width: 55%;
-    max-width: 200px;
-    opacity: 0.9;
+/* Course completion stamp in card body, centered and tilted like a rubber stamp. */
+.local-mycoursesbycategory-container .course-card .course-complete-stamp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
     pointer-events: none;
-    z-index: 1;
+}
+
+.local-mycoursesbycategory-container .course-card .course-complete-stamp img {
+    width: 65%;
+    max-width: 180px;
+    opacity: 0.85;
+    transform: rotate(-18deg);
 }
 
 /* Toggle folder icon: open when expanded, closed when collapsed. */
