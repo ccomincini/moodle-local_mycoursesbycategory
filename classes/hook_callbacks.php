@@ -33,9 +33,13 @@ class hook_callbacks {
     /**
      * Redirect /my/courses.php to the plugin page when enabled.
      *
-     * @param before_http_headers $hook The hook instance (unused, required by hook API).
+     * @param before_http_headers $hook The hook instance.
      */
-    public static function before_http_headers(before_http_headers $hook): void { // phpcs:ignore
+    public static function before_http_headers(before_http_headers $hook): void {
+        if (!($hook instanceof before_http_headers)) {
+            return;
+        }
+
         if (!get_config('local_mycoursesbycategory', 'enableredirect')) {
             return;
         }

@@ -69,7 +69,20 @@ class helper {
                 ];
             }
 
-            $categories[$catid]['courses'][] = self::build_course_data($course, $userid);
+            $courseobj = new core_course_list_element($course);
+            $courseimage = self::get_course_image($courseobj);
+            $iscomplete = self::is_course_complete($course->id, $userid);
+            $categories[$catid]['courses'][] = [
+                'id' => $course->id,
+                'fullname' => format_string($course->fullname, true),
+                'shortname' => format_string($course->shortname, true),
+                'courseurl' => (new moodle_url('/course/view.php', ['id' => $course->id]))->out(false),
+                'courseimage' => $courseimage,
+                'iscomplete' => $iscomplete,
+                'completebadgeurl' => $iscomplete
+                    ? (new moodle_url('/local/mycoursesbycategory/pix/completato.png'))->out(false)
+                    : null,
+            ];
             $categories[$catid]['coursecount']++;
         }
 
@@ -80,36 +93,20 @@ class helper {
     }
 
     /**
-     * Build course template data for a single course.
+     * Check whether a course is complete for a given user.
      *
-     * @param \stdClass $course The course record.
+     * @param int $courseid The course ID.
      * @param int $userid The user ID.
-     * @return array The course data for the template.
+     * @return bool True if the course is complete.
      */
-    private static function build_course_data(\stdClass $course, int $userid): array {
+    private static function is_course_complete(int $courseid, int $userid): bool {
         global $DB;
-
-        $courseobj = new core_course_list_element($course);
-        $courseimage = self::get_course_image($courseobj);
-
         $timecompleted = $DB->get_field(
             'course_completions',
             'timecompleted',
-            ['userid' => $userid, 'course' => $course->id]
+            ['userid' => $userid, 'course' => $courseid]
         );
-        $iscomplete = !empty($timecompleted);
-
-        return [
-            'id' => $course->id,
-            'fullname' => format_string($course->fullname, true),
-            'shortname' => format_string($course->shortname, true),
-            'courseurl' => (new moodle_url('/course/view.php', ['id' => $course->id]))->out(false),
-            'courseimage' => $courseimage,
-            'iscomplete' => $iscomplete,
-            'completebadgeurl' => $iscomplete
-                ? (new moodle_url('/local/mycoursesbycategory/pix/completato.png'))->out(false)
-                : null,
-        ];
+        return !empty($timecompleted);
     }
 
     /**
